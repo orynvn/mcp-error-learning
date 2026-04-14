@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-error-learning"
+version = "0.1.0"
+description = "MCP server — Error Learning knowledge base for Copilot Debugger agent"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+mcp-error-learning = "mcp_error_learning.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_error_learning"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
